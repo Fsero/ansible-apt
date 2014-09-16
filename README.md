@@ -88,5 +88,5 @@ MIT License (see [LICENSE][license])
 
 [cspicer]: https://github.com/cspicer
 [repo]: https://github.com/cspicer/ansible-apt
-[issues]: https://github.com/cspicer/ansible-aptissues
+[issues]: https://github.com/cspicer/ansible-apt/issues
 [license]: https://github.com/cspicer/ansible-apt/blob/master/LICENSE
