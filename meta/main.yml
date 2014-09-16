@@ -11,9 +11,9 @@ galaxy_info:
         - wheezy
         - jessie
     - name: Ubuntu
-       versions:
-         - precise
-         - trusty
+      versions:
+        - precise
+        - trusty
   categories:
   - development
   - packaging
