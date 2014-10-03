@@ -1,4 +1,8 @@
 ---
+- name: main | install ansible apt dependencies
+  action: apt pkg={{ item }} state=latest
+  with_items: apt_pkgs
+
 - name: main | add repository
   apt_repository: "repo='{{ item.repo_url }}' state=present"
   with_items: apt_repo
@@ -18,8 +22,4 @@
 - name: main | apt-cache update
   apt:
     update_cache=yes
-    cache_valid_time={{ apt.cache_valid_time }}
-
-- name: main | install ansible apt dependencies
-  action: apt pkg={{ item }} state=latest
-  with_items: apt.dependencies
+    cache_valid_time={{ apt_cache_valid_time }}
