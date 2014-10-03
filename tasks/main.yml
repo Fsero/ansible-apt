@@ -1,7 +1,7 @@
 ---
 - name: main | install ansible apt dependencies
   action: apt pkg={{ item }} state=latest
-  with_items: apt_pkgs
+  with_items: apt_pkg
 
 - name: main | add repository
   apt_repository: "repo='{{ item.repo_url }}' state=present"
