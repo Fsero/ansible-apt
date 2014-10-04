@@ -1,6 +1,6 @@
 ---
-apt:
-  cache_valid_time: 3600
-  dependencies:
-    - python-apt
-    - python-pycurl
+apt_cache_valid_time: 3600
+apt_pkg:
+  - python-apt
+  - python-pycurl
+  - apt-transport-https
