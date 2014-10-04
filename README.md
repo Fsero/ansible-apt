@@ -36,12 +36,12 @@ repo_url        | String      | URI of repository to be added
 key_id          | String      | ID of GPG key for repo
 key_url         | String      | URL to download key from
 
-### defaults
+### apt
 
 Variable                | Type      | Description
 --------                | ----      | -----------
-apt_cache_valid_time    | Integer   | Time in seconds before the apt cache is considered stale
-apt_pkg                 | List      | Packages to be installed to support apt module
+cache_valid_time        | Integer   | Time in seconds before the apt cache is considered stale
+dependencies            | List      | Packages to be installed to support apt module
 
 ## Tasks
 
