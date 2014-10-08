@@ -2,5 +2,7 @@
 apt:
   cache_valid_time: 3600
   dependencies:
+    - apt-transport-https
+    - software-properties-common
     - python-apt
     - python-pycurl
