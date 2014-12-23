@@ -15,9 +15,12 @@
   register: apt_require_update
 
 - name: main | add repository key
-  apt_key: "id='{{ item.key_id }}' url='{{ item.key_url }}' state=present"
+  apt_key:
+    id='{{ item.key_id }}'
+    keyserver='{{ item.key_server }}'
+    state=present
   with_items: apt_repo
-  when: item.key_url is defined
+  when: item.key_url and item.keyserver is defined
   register: apt_require_update
 
 - name: main | apt-cache update (changed)
