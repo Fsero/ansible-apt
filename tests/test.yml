@@ -1,0 +1,15 @@
+---
+- hosts: all
+  roles:
+    - role: ansible-apt
+      apt_repo:
+        - repo_url: "deb https://get.docker.com/ubuntu docker main"
+          key_id: '36A1D7869245C8950F966E92D8576A8BA88D21E9'
+          key_server: 'keyserver.ubuntu.com'
+  tasks:
+    - name: test | check custom repo exists
+      stat: path=/etc/apt/sources.list.d/get_docker_com_ubuntu.list
+      register: repo
+    - assert:
+        that:
+          - repo.stat.exists and repo.stat.isreg
