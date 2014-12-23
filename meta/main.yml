@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Chris Spicer
-  description: Ansible role for installing and managing sudo
+  description: Ansible role for managing apt repositories and keeping the local apt cache up to date
   license: MIT
   min_ansible_version: 1.8
   platforms:
