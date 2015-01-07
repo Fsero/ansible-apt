@@ -2,11 +2,11 @@
 - name: main | apt-cache update
   apt:
     update_cache=yes
-    cache_valid_time={{ apt.cache_valid_time }}
+    cache_valid_time={{ apt_cache_time }}
 
 - name: main | install ansible apt dependencies
   action: apt pkg={{ item }} state=latest
-  with_items: apt.dependencies
+  with_items: apt_pkg
 
 - name: main | add repository
   apt_repository: "repo='{{ item.repo_url }}' state=present"
@@ -15,9 +15,12 @@
   register: apt_require_update
 
 - name: main | add repository key
-  apt_key: "id='{{ item.key_id }}' url='{{ item.key_url }}' state=present"
+  apt_key:
+    id='{{ item.key_id }}'
+    keyserver='{{ item.key_server }}'
+    state=present
   with_items: apt_repo
-  when: item.key_url is defined
+  when: item.key_url and item.keyserver is defined
   register: apt_require_update
 
 - name: main | apt-cache update (changed)

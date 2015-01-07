@@ -2,13 +2,9 @@
 
 Ansible role for managing apt repositories and keeping the local apt cache up to date. By default, no new repositories are added unless `apt_repos` is defined.
 
-## Requirements
-
-None
-
 ## Dependencies
 
-None.
+None
 
 ## Platforms
 
@@ -26,29 +22,27 @@ None.
 
 See [`defaults/main.yml`](defaults/main.yml) for default values.
 
-### apt_repo
+These variables should be set either as a dependency in `meta/main.yml` for your role, or as a part of your playbook. See below for examples.
 
-These variables should be set either as a dependency in `meta/main.yml` for your role, or as a part of your include statement. See below for examples.
+Variable            | Type      | Description
+--------            | ----      | -----------
+apt_pkg             | List      | Packages to be installed to support apt module
+apt_cache_time      | Integer   | Time in seconds before apt cache is considered stale
+
+### apt_repo
 
 Variable        | Type        | Description
 --------        | ----        | -----------
 repo_url        | String      | URI of repository to be added
 key_id          | String      | ID of GPG key for repo
-key_url         | String      | URL to download key from
-
-### apt
-
-Variable                | Type      | Description
---------                | ----      | -----------
-cache_valid_time        | Integer   | Time in seconds before the apt cache is considered stale
-dependencies            | List      | Packages to be installed to support apt module
+key_server      | String      | Keyserver to use for downloading key
 
 ## Tasks
 
 ### main
 
 - Adds repositories specified in `apt_repos` variable list
-- Updates apt-cache if older than value for `apt.cache_valid_time`
+- Updates apt-cache if older than value for `apt_cache_time`
 - Installs Python libraries used by Ansible for managing apt
 
 ## Examples
