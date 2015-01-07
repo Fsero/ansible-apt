@@ -14,7 +14,7 @@
   when: apt_repo is defined
   register: apt_require_update
 
-- name: main | add repository key via keyserevr
+- name: main | add repository key via keyserver
   apt_key:
     id='{{ item.key_id }}'
     keyserver='{{ item.key_server }}'
