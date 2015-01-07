@@ -14,13 +14,22 @@
   when: apt_repo is defined
   register: apt_require_update
 
-- name: main | add repository key
+- name: main | add repository key via keyserver
   apt_key:
     id='{{ item.key_id }}'
     keyserver='{{ item.key_server }}'
     state=present
   with_items: apt_repo
-  when: item.key_url and item.keyserver is defined
+  when: item.key_id and item.key_server is defined
+  register: apt_require_update
+
+- name: main | add repository key via url
+  apt_key:
+    id='{{ item.key_id }}'
+    url='{{ item.key_url }}'
+    state=present
+  with_items: apt_repo
+  when: item.key_id and item.key_url is defined
   register: apt_require_update
 
 - name: main | apt-cache update (changed)
