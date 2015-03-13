@@ -4,4 +4,5 @@ apt_pkg:
   - software-properties-common
   - python-apt
   - python-pycurl
+  - python-httplib2
 apt_cache_time: 3600
